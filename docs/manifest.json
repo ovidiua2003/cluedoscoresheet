@@ -1,6 +1,6 @@
 {
     "name": "Cluedo Score Sheet",
-    "short_name": "cluedo_score_sheet",
+    "short_name": "Cluedo Score Sheet",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
