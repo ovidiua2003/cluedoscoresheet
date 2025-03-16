@@ -33,5 +33,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Update GitHub Pages"
-          branch: main # Or your main branch
+          branch: main
           file_pattern: docs/*
+          access_token: ${{ secrets.GH_PAT }} 
