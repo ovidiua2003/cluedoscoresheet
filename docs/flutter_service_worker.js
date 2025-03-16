@@ -31,13 +31,13 @@ const RESOURCES = {"canvaskit/skwasm.js": "f2ad9363618c5f62e813740099a80e63",
 "version.json": "fe16ca8012e94a2ffaffb4c802822112",
 "flutter.js": "76f08d47ff9f5715220992f993002504",
 "main.dart.js": "6431687bb1d27e95d437833834b10016",
-"icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
-"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
-"manifest.json": "f5ae009c976922789809f147da8b95b7",
+"icons/cluedo_icon_512.png": "5c2c3c4f745e4c03e30ef4d70454c873",
+"icons/cluedo_icon_maskable_512.png": "5c2c3c4f745e4c03e30ef4d70454c873",
+"icons/cluedo_icon_maskable_192.png": "d9a653e0a9087f954ebe40d54730e685",
+"icons/cluedo_icon_192.png": "d9a653e0a9087f954ebe40d54730e685",
+"manifest.json": "66b36f43ad0bb1f8317e388bb8a6b423",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"flutter_bootstrap.js": "f0ef6b147e5800ac5ed563c2516e115e"};
+"flutter_bootstrap.js": "0224689991e1337a207ec848b346dcdb"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
