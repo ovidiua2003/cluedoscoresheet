@@ -2,21 +2,18 @@ import 'package:cluedo_score_sheet/models/cluedo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScoreSheetProvider extends ChangeNotifier {
   CluedoScoreSheet scoreSheet;
-  List<List<String>> nestedRowLabels = [
-    ["Miss Scarlet", "Colonel Mustard", "Mrs. White", "Reverend Green", "Mrs. Peacock", "Professor Plum"],
-    ["Kitchen", "Ballroom", "Conservatory", "Dining Room", "Billiard Room", "Library", "Lounge", "Hall", "Study"],
-    ["Rope", "Lead Pipe", "Knife", "Wrench", "Candlestick", "Revolver"]
-  ];
 
   ScoreSheetProvider(this.scoreSheet){
     loadData();
   }
 
-  void addPlayer(String playerName) {
-    scoreSheet.players.add(PlayerScore(playerName, nestedRowLabels.expand((list) => list).toList().length, 1));
+  void addPlayer(BuildContext context, String playerName) {
+    List<List<String>> translatedLabels = getNestedRowLabels(context);
+    scoreSheet.players.add(PlayerScore(playerName, translatedLabels.expand((list) => list).toList().length, 1));
     notifyListeners();
     _saveData();
   }
@@ -59,5 +56,35 @@ class ScoreSheetProvider extends ChangeNotifier {
     }
   }
 
-  // Add toJson and fromJson to CluedoScoreSheet and PlayerScore classes.
+  List<List<String>> getNestedRowLabels(BuildContext context) {
+    return [
+      [
+        AppLocalizations.of(context)!.missScarlet,
+        AppLocalizations.of(context)!.colonelMustard,
+        AppLocalizations.of(context)!.mrsWhite,
+        AppLocalizations.of(context)!.reverendGreen,
+        AppLocalizations.of(context)!.mrsPeacock,
+        AppLocalizations.of(context)!.professorPlum,
+      ],
+      [
+        AppLocalizations.of(context)!.kitchen,
+        AppLocalizations.of(context)!.ballroom,
+        AppLocalizations.of(context)!.conservatory,
+        AppLocalizations.of(context)!.diningRoom,
+        AppLocalizations.of(context)!.billiardRoom,
+        AppLocalizations.of(context)!.library,
+        AppLocalizations.of(context)!.lounge,
+        AppLocalizations.of(context)!.hall,
+        AppLocalizations.of(context)!.study,
+      ],
+      [
+        AppLocalizations.of(context)!.rope,
+        AppLocalizations.of(context)!.leadPipe,
+        AppLocalizations.of(context)!.knife,
+        AppLocalizations.of(context)!.wrench,
+        AppLocalizations.of(context)!.candlestick,
+        AppLocalizations.of(context)!.revolver,
+      ],
+    ];
+  }
 }

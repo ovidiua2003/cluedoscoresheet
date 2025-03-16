@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/score_sheet_provider.dart';
 import 'score_cell.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScoreGrid extends StatelessWidget {
   final int playerIndex;
@@ -26,17 +27,17 @@ class ScoreGrid extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Clear Column?'),
-          content: Text('Are you sure you want to clear this column?'),
+          title: Text(AppLocalizations.of(context)!.clearAll),
+          content: Text(AppLocalizations.of(context)!.clearColumnContent),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: Text(AppLocalizations.of(context)!.cancel),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Clear'),
+              child: Text(AppLocalizations.of(context)!.clear),
               onPressed: () {
                 final scoreSheetProvider = Provider.of<ScoreSheetProvider>(context, listen: false);
                 //Get the first column index.
@@ -114,7 +115,7 @@ class ScoreGrid extends StatelessWidget {
         SizedBox(height: 10),
         OutlinedButton(
           onPressed: () => _clearColumnDialog(context, playerIndex),
-          child: Text('Clear All'),
+          child: Text(AppLocalizations.of(context)!.clearAll),
         ),
         SizedBox(height: 30),
       ],
