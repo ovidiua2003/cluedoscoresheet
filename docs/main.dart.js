@@ -6711,7 +6711,7 @@ var $async$abz=A.T(function(a,b){if(a===1)return A.P(b,r)
 while(true)switch(s){case 0:if($.ah==null)A.ajc()
 $.ah.toString
 q=t.s
-p=new A.j9(new A.BE(A.b([A.ahZ("Player 1",12,1)],t.F6)),A.b([A.b(["Miss Scarlet","Colonel Mustard","Mrs. White","Reverend Green","Mrs. Peacock","Professor Plum"],q),A.b(["Kitchen","Ballroom","Conservatory","Dining Room","Billiard Room","Library","Lounge","Hall","Study"],q),A.b(["Rope","Lead Pipe","Knife","Wrench","Candlestick","Revolver"],q)],t.rj),$.aL())
+p=new A.j9(new A.BE(A.b([A.ahZ("Player 1",21,1)],t.F6)),A.b([A.b(["Miss Scarlet","Colonel Mustard","Mrs. White","Reverend Green","Mrs. Peacock","Professor Plum"],q),A.b(["Kitchen","Ballroom","Conservatory","Dining Room","Billiard Room","Library","Lounge","Hall","Study"],q),A.b(["Rope","Lead Pipe","Knife","Wrench","Candlestick","Revolver"],q)],t.rj),$.aL())
 p.px()
 s=2
 return A.X(p.px(),$async$abz)
