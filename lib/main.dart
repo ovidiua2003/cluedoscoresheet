@@ -9,7 +9,7 @@ import 'widgets/score_grid.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required for shared_preferences
   final initialScoreSheet = CluedoScoreSheet([
-    PlayerScore("Player 1", 12, 1)
+    PlayerScore("Player 1", 21, 1)
   ]);
 
   final scoreSheetProvider = ScoreSheetProvider(initialScoreSheet);
