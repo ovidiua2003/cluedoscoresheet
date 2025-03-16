@@ -8,6 +8,16 @@ import 'score_cell.dart';
 class ScoreGrid extends StatelessWidget {
   final int playerIndex;
   final List<List<String>> rowLabels; // Accept a nested list
+  final Map<String, Color> rowLabelColors = {
+    "characters": Colors.amber[100]!,
+    "rooms": Colors.lightGreen[100]!,
+    "weapons": Colors.lightBlue[100]!,
+  };
+  final Map<String, Color> rowDividerColors = {
+    "characters": const Color.fromARGB(255, 199, 153, 13),
+    "rooms": const Color.fromARGB(255, 92, 121, 58),
+    "weapons": const Color.fromARGB(255, 52, 105, 129),
+  };
 
   ScoreGrid({required this.playerIndex, required this.rowLabels}); // Update constructor
 
@@ -59,43 +69,74 @@ class ScoreGrid extends StatelessWidget {
           playerScore.scores.length,
           (rowIndex) => Column(
             children: [
-              Row(
-                children: [
-                  SizedBox( // Fixed width for labels column
-                    width: 200, // Adjust width as needed
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Text(flattenedLabels[rowIndex]),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                color: _getRowLabelColor(rowIndex),
+                child: Row(
+                  children: [
+                    SizedBox( // Fixed width for labels column
+                      width: 300, // Adjust width as needed
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Text(
+                          flattenedLabels[rowIndex], 
+                          style: Theme.of(context).textTheme.displayLarge
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Row(
-                      children: List.generate(
-                        1, // single column now
-                        (columnIndex) => Expanded(
-                          child: ScoreCell(
-                            playerIndex: playerIndex,
-                            rowIndex: rowIndex,
-                            columnIndex: columnIndex,
-                            scoreEntry: playerScore.scores[rowIndex][columnIndex],
+                    SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: Row(
+                        children: List.generate(
+                          1, // single column now
+                          (columnIndex) => Expanded(
+                            child: ScoreCell(
+                              playerIndex: playerIndex,
+                              rowIndex: rowIndex,
+                              columnIndex: columnIndex,
+                              scoreEntry: playerScore.scores[rowIndex][columnIndex],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              if (delimiterIndices.contains(rowIndex)) Divider(),
+              if (delimiterIndices.contains(rowIndex)) 
+                Divider(thickness: 5, height: 5, color: Colors.black) 
+              else 
+                Divider(height:1, color: _getDividerColor(rowIndex))
             ],
           ),
         ),
-        ElevatedButton(
+        SizedBox(height: 10),
+        OutlinedButton(
           onPressed: () => _clearColumnDialog(context, playerIndex),
-          child: Text('Clear Column'),
+          child: Text('Clear All'),
         ),
       ],
     );
+  }
+
+  Color _getRowLabelColor(int rowIndex) {
+    if (rowIndex < 6) {
+      return rowLabelColors["characters"]!; // Characters
+    } else if (rowIndex < 15) {
+      return rowLabelColors["rooms"]!; // Rooms
+    } else {
+      return rowLabelColors["weapons"]!; // Weapons
+    }
+  }
+
+  Color _getDividerColor(int rowIndex) {
+    if (rowIndex < 6) {
+      return rowDividerColors["characters"]!; // Characters
+    } else if (rowIndex < 15) {
+      return rowDividerColors["rooms"]!; // Rooms
+    } else {
+      return rowDividerColors["weapons"]!; // Weapons
+    }
   }
 }

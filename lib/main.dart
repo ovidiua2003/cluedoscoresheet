@@ -29,7 +29,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cluedo Score Sheet',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorSchemeSeed: Colors.teal,
+        useMaterial3: true,
+        textTheme: TextTheme(
+          displayLarge: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromARGB(255, 33, 33, 33),
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromARGB(255, 88, 88, 88),
+          ),
+          labelLarge: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromARGB(255, 33, 33, 33),
+          ),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -44,6 +62,8 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cluedo Score Sheet'),
+        elevation: 2,
+        surfaceTintColor: Colors.teal,
       ),
       body: SingleChildScrollView( //Make the app scrollable if many players.
         child: Column(

@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.2.2 # For storing the game state
   provider: ^6.0.1 # For state management
+  flutter_svg: ^2.0.17 # For displaying SVG images
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +20,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/cross.svg
+    - assets/check-mark.svg
+    - assets/question-mark.svg
+    - assets/trash.svg

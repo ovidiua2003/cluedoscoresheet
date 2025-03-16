@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../models/cluedo_model.dart';
 import '../providers/score_sheet_provider.dart';
 import 'score_entry_dialog.dart';
@@ -25,13 +26,11 @@ class ScoreCell extends StatelessWidget {
       onTap: () => _showScoreEntryDialog(context),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey)
+          border: Border.all(color: const Color.fromARGB(255, 200, 200, 200)),
+          color: Colors.white
         ),
         alignment: Alignment.center,
-        child: Text(
-          scoreEntry.value,
-          style: TextStyle(fontSize: 20),
-        ),
+        child: _getCellValueWidget(scoreEntry.value),
       ),
     );
   }
@@ -49,5 +48,17 @@ class ScoreCell extends StatelessWidget {
         );
       },
     );
+  }
+
+  Widget _getCellValueWidget(String? value) {
+    if (value == 'x') {
+      return SvgPicture.asset('assets/cross.svg', width: 24, height: 24);
+    } else if (value == 'y') {
+      return SvgPicture.asset('assets/check-mark.svg', width: 24, height: 24);
+    } else if (value == '?') {
+      return SvgPicture.asset('assets/question-mark.svg', width: 24, height: 24);
+    } else {
+      return const SizedBox.shrink(); // Display nothing if value is empty or null
+    }
   }
 }
