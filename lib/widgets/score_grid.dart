@@ -116,6 +116,7 @@ class ScoreGrid extends StatelessWidget {
           onPressed: () => _clearColumnDialog(context, playerIndex),
           child: Text('Clear All'),
         ),
+        SizedBox(height: 30),
       ],
     );
   }
