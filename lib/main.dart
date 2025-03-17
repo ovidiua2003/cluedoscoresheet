@@ -7,6 +7,7 @@ import 'providers/score_sheet_provider.dart';
 import 'widgets/score_grid.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required for shared_preferences
@@ -59,28 +60,41 @@ class _MyAppState extends State<MyApp> {
         Locale('ro'),
       ],
       title: 'Cluedo Score Sheet',
-      theme: ThemeData(
-        colorSchemeSeed: Colors.teal,
-        useMaterial3: true,
-        textTheme: TextTheme(
-          displayLarge: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: const Color.fromARGB(255, 33, 33, 33),
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: const Color.fromARGB(255, 88, 88, 88),
-          ),
-          labelLarge: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: const Color.fromARGB(255, 33, 33, 33),
-          ),
+      theme: _buildTheme(),
+      home: MyHomePage(),
+    );
+  }
+
+  ThemeData _buildTheme() {
+    var baseTheme = ThemeData(
+      colorSchemeSeed: Colors.teal,
+      useMaterial3: true,
+      textTheme: TextTheme(
+        displayLarge: TextStyle(
+          fontSize: 18,
+          color: const Color.fromARGB(255, 33, 33, 33),
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+          color: const Color.fromARGB(255, 88, 88, 88),
+        ),
+        labelLarge: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: const Color.fromARGB(255, 33, 33, 33),
+        ),
+        headlineLarge: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+          letterSpacing: -0.5,
+          color: const Color.fromARGB(255, 33, 33, 33),
         ),
       ),
-      home: MyHomePage(),
+    );
+
+    return baseTheme.copyWith(
+      textTheme: GoogleFonts.plusJakartaSansTextTheme(baseTheme.textTheme),
     );
   }
 }
@@ -98,10 +112,17 @@ class _MyHomePageState extends State<MyHomePage> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.appTitle),
-        elevation: 2,
-        surfaceTintColor: Colors.teal,
+        title: Text(AppLocalizations.of(context)!.appTitle, style: Theme.of(context).textTheme.headlineLarge),
+        elevation: 5,
+        backgroundColor: const Color.fromARGB(255, 206, 229, 241),
+        shadowColor: const Color.fromARGB(255, 0, 0, 0),
         actions: [
+          IconButton(
+            onPressed: () {
+              ScoreGrid.clearColumnDialog(context, 0);
+            },
+            icon: Icon(Icons.delete_forever_outlined, size: 32,),
+          ),
           IconButton(
             onPressed: () {
               setState(() {
@@ -115,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               });
             },
-            icon: Icon(_currentLocale == const Locale('en') ? Icons.flag : Icons.language),
+            icon: Text(_currentLocale == const Locale('en') ? "RO" : "EN", style: TextStyle(color: Colors.blueGrey)),
           ),
         ],
       ),

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/score_sheet_provider.dart';
 import 'score_cell.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ScoreGrid extends StatelessWidget {
   final int playerIndex;
@@ -22,22 +23,22 @@ class ScoreGrid extends StatelessWidget {
 
   ScoreGrid({required this.playerIndex, required this.rowLabels}); // Update constructor
 
-  void _clearColumnDialog(BuildContext context, int playerIndex) {
+  static void clearColumnDialog(BuildContext context, int playerIndex) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.clearAll),
-          content: Text(AppLocalizations.of(context)!.clearColumnContent),
+          title: Text(AppLocalizations.of(context)!.clearAll, style: GoogleFonts.plusJakartaSans(textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 20))),
+          content: Text(AppLocalizations.of(context)!.clearColumnContent, style: GoogleFonts.plusJakartaSans(textStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 16))),
           actions: <Widget>[
             TextButton(
-              child: Text(AppLocalizations.of(context)!.cancel),
+              child: Text(AppLocalizations.of(context)!.cancel, style: GoogleFonts.plusJakartaSans(textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 20))),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text(AppLocalizations.of(context)!.clear),
+              child: Text(AppLocalizations.of(context)!.clear, style: GoogleFonts.plusJakartaSans(textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 20))),
               onPressed: () {
                 final scoreSheetProvider = Provider.of<ScoreSheetProvider>(context, listen: false);
                 //Get the first column index.
@@ -114,7 +115,7 @@ class ScoreGrid extends StatelessWidget {
         ),
         SizedBox(height: 10),
         OutlinedButton(
-          onPressed: () => _clearColumnDialog(context, playerIndex),
+          onPressed: () => clearColumnDialog(context, playerIndex),
           child: Text(AppLocalizations.of(context)!.clearAll),
         ),
         SizedBox(height: 30),

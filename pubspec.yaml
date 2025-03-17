@@ -15,6 +15,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.19.0 # or latest version
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -29,3 +30,4 @@ flutter:
     - assets/check-mark.svg
     - assets/question-mark.svg
     - assets/trash.svg
+    - assets/fonts/

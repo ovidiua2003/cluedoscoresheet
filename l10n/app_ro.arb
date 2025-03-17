@@ -25,5 +25,6 @@
   "clearColumnTitle": "Șterge Coloana?",
   "clearColumnContent": "Ești sigur că vrei să ștergi această coloană?",
   "cancel": "Anulează",
-  "clear": "Șterge"
+  "clear": "Șterge",
+  "selectScore": "Alege simbolul"
 }
