@@ -25,5 +25,6 @@
   "clearColumnTitle": "Clear Column?",
   "clearColumnContent": "Are you sure you want to clear this column?",
   "cancel": "Cancel",
-  "clear": "Clear"
+  "clear": "Clear",
+  "selectScore": "Select Score Entry"
 }
