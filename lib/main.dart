@@ -113,9 +113,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle, style: Theme.of(context).textTheme.headlineLarge),
-        elevation: 2,
-        backgroundColor: const Color.fromARGB(100, 186, 210, 223),
+        elevation: 5,
+        backgroundColor: const Color.fromARGB(255, 206, 229, 241),
+        shadowColor: const Color.fromARGB(255, 0, 0, 0),
         actions: [
+          IconButton(
+            onPressed: () {
+              ScoreGrid.clearColumnDialog(context, 0);
+            },
+            icon: Icon(Icons.delete_forever_outlined, size: 32,),
+          ),
           IconButton(
             onPressed: () {
               setState(() {

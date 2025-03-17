@@ -22,7 +22,7 @@ class ScoreGrid extends StatelessWidget {
 
   ScoreGrid({required this.playerIndex, required this.rowLabels}); // Update constructor
 
-  void _clearColumnDialog(BuildContext context, int playerIndex) {
+  static void clearColumnDialog(BuildContext context, int playerIndex) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -114,7 +114,7 @@ class ScoreGrid extends StatelessWidget {
         ),
         SizedBox(height: 10),
         OutlinedButton(
-          onPressed: () => _clearColumnDialog(context, playerIndex),
+          onPressed: () => clearColumnDialog(context, playerIndex),
           child: Text(AppLocalizations.of(context)!.clearAll),
         ),
         SizedBox(height: 30),
